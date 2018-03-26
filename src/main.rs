@@ -31,7 +31,7 @@ fn main() {
     let matches = App::new("Maze Solver")
         .version("1.0")
         .author("Stian S. <soltvedt.stian@gmail.com>")
-        .about("Solves a maze provided with an image file.")
+        .about("Solves a maze provided by an image file.")
         .arg(Arg::with_name("INPUT")
             .help("Sets the input file to use")
             .required(true)

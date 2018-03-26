@@ -2,6 +2,8 @@
 name = "maze_solver"
 version = "0.1.0"
 authors = ["Stian Soltvedt <soltvedt.stian@gmail.com>"]
+description = "Solves a maze provided by an image file."
+readme = "README.md"
 repository = "https://github.com/stisol/Maze-Solver"
 license = "MIT"
 
