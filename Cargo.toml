@@ -2,6 +2,8 @@
 name = "maze_solver"
 version = "0.1.0"
 authors = ["Stian Soltvedt <soltvedt.stian@gmail.com>"]
+repository = "https://github.com/stisol/Maze-Solver"
+license = "MIT"
 
 [dependencies]
 image = "^0.18"
