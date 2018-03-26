@@ -6,3 +6,4 @@ authors = ["Stian Soltvedt <soltvedt.stian@gmail.com>"]
 [dependencies]
 image = "^0.18"
 pathfinding = "^0.7.0"
+clap = "^2.31"
