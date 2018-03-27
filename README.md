@@ -10,7 +10,7 @@ Made by combining the wonderful
 ## Usage
 
 ```sh
-maze_solver.exe image_file
+maze_solver.exe <INPUT> <x1> <y1> <x2> <y2>
 ```
 
 See also `maze_solver.exe --help` for help.
