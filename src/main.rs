@@ -21,7 +21,7 @@ impl Pos {
         vec![Pos(x + 1, y), Pos(x - 1, y), Pos(x, y + 1), Pos(x, y - 1)]
             .into_iter()
             .filter(|p| p.0 < w && p.1 < h && p.0 >= 0 && p.1 >= 0)
-            .filter(|p| img.get_pixel(p.0 as u32, p.1 as u32).data[0] > 122)
+            .filter(|p| img.get_pixel(p.0 as u32, p.1 as u32).0[0] > 122)
             .map(|p| (p, 1))
             .collect()
     }
@@ -92,7 +92,7 @@ fn main() {
         .expect("Failed to open image")
         .grayscale()
         .adjust_contrast(std::f32::MAX)
-        .to_rgb();
+        .to_rgb8();
 
     let goal: Pos = Pos(x2 as i32, y2 as i32);
     let result = astar(
@@ -104,7 +104,7 @@ fn main() {
 
     if let Some((path, _)) = result {
         for p in &path {
-            rgb.put_pixel(p.0 as u32, p.1 as u32, Rgb { data: [255, 0, 0] });
+            rgb.put_pixel(p.0 as u32, p.1 as u32, Rgb([255, 0, 0]));
         }
 
         println!("Path length: {}", path.len());
