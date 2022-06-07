@@ -92,7 +92,7 @@ fn main() {
         .expect("Failed to open image")
         .grayscale()
         .adjust_contrast(std::f32::MAX)
-        .to_rgb8();
+        .to_rgba8();
 
     let goal: Pos = Pos(x2 as i32, y2 as i32);
     let result = astar(
