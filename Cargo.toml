@@ -6,6 +6,7 @@ description = "Solves a maze provided by an image file."
 readme = "README.md"
 repository = "https://github.com/stisol/Maze-Solver"
 license = "MIT"
+edition = "2021"
 
 [dependencies]
 image = "^0.24"
