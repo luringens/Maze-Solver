@@ -1,9 +1,8 @@
-#[macro_use]
 extern crate clap;
 extern crate image;
 extern crate pathfinding;
 
-use clap::{App, Arg};
+use clap::{Arg, Command};
 use image::{ImageBuffer, Rgb};
 use pathfinding::directed::astar::astar;
 
@@ -28,18 +27,18 @@ impl Pos {
 }
 
 fn main() {
-    let matches = App::new("Maze Solver")
+    let matches = Command::new("Maze Solver")
         .version("1.0")
         .author("Stian S. <soltvedt.stian@gmail.com>")
         .about("Solves a maze provided by an image file.")
         .arg(
-            Arg::with_name("INPUT")
+            Arg::new("INPUT")
                 .help("Sets the input file to use")
                 .required(true)
                 .index(1),
         )
         .arg(
-            Arg::with_name("x1")
+            Arg::new("x1")
                 .long("startx")
                 .help("Sets the x coordinate of the start position")
                 .takes_value(true)
@@ -47,27 +46,24 @@ fn main() {
                 .index(2),
         )
         .arg(
-            Arg::with_name("y1")
+            Arg::new("y1")
                 .long("starty")
-                .short("sy")
                 .help("Sets the y coordinate of the start position")
                 .takes_value(true)
                 .required(true)
                 .index(3),
         )
         .arg(
-            Arg::with_name("x2")
+            Arg::new("x2")
                 .long("goalx")
-                .short("gx")
                 .help("Sets the x coordinate of the goal position")
                 .takes_value(true)
                 .required(true)
                 .index(4),
         )
         .arg(
-            Arg::with_name("y2")
+            Arg::new("y2")
                 .long("goaly")
-                .short("gy")
                 .help("Sets the y coordinate of the goal position")
                 .takes_value(true)
                 .required(true)
@@ -79,14 +75,18 @@ fn main() {
         .value_of("INPUT")
         .expect("Failed to parse input file path.");
 
-    let x1 =
-        value_t!(matches, "x1", u32).expect("Failed to parse input for x1 as a positive integer.");
-    let y1 =
-        value_t!(matches, "y1", u32).expect("Failed to parse input for y1 as a positive integer.");
-    let x2 =
-        value_t!(matches, "x2", u32).expect("Failed to parse input for x2 as a positive integer.");
-    let y2 =
-        value_t!(matches, "y2", u32).expect("Failed to parse input for y2 as a positive integer.");
+    let x1: u32 = matches
+        .value_of_t("x1")
+        .expect("Failed to parse input for x1 as a positive integer.");
+    let y1: u32 = matches
+        .value_of_t("y1")
+        .expect("Failed to parse input for y1 as a positive integer.");
+    let x2: u32 = matches
+        .value_of_t("x2")
+        .expect("Failed to parse input for x2 as a positive integer.");
+    let y2: u32 = matches
+        .value_of_t("y2")
+        .expect("Failed to parse input for y2 as a positive integer.");
 
     let mut rgb = image::open(filepath)
         .expect("Failed to open image")
