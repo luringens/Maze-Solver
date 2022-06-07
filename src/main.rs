@@ -5,7 +5,7 @@ extern crate pathfinding;
 
 use clap::{App, Arg};
 use image::{ImageBuffer, Rgb};
-use pathfinding::astar::astar;
+use pathfinding::directed::astar::astar;
 
 #[derive(Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
 struct Pos(i32, i32);
